@@ -1,0 +1,203 @@
+<html>
+<head>
+  <style>
+    /* Add your custom CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 24px;
+      font-weight: normal;
+      color: #666;
+    }
+
+    .quote {
+      margin: 20px 0;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .quote-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .quote-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .quote-price {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .quote-body {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: normal;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .quote-button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #333;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .quote-button:hover {
+      background-color: #444;
+    }
+
+    .quote-compare {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .quote-compare-label {
+      font-size: 16px;
+      font-weight: normal;
+      color: #666;
+    }
+
+    .quote-compare-select {
+      margin-left: 10px;
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: normal;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Quota Page</h1>
+    <p class="subtitle">Choose the best option for your needs</p>
+    <div class="quote" id="quote1">
+      <div class="quote-header">
+        <span class="quote-title">Basic</span>
+        <span class="quote-price">$9.99/month</span>
+      </div>
+      <div class="quote-body">
+        <ul>
+          <li>10 GB of storage</li>
+          <li>100 GB of bandwidth</li>
+          <li>1 domain</li>
+          <li>24/7 support</li>
+        </ul>
+      </div>
+      <button class="quote-button" onclick="selectQuote(1)">Select</button>
+    </div>
+    <div class="quote" id="quote2">
+      <div class="quote-header">
+        <span class="quote-title">Premium</span>
+        <span class="quote-price">$19.99/month</span>
+      </div>
+      <div class="quote-body">
+        <ul>
+          <li>50 GB of storage</li>
+          <li>500 GB of bandwidth</li>
+          <li>5 domains</li>
+          <li>24/7 support</li>
+        </ul>
+      </div>
+      <button class="quote-button" onclick="selectQuote(2)">Select</button>
+    </div>
+    <div class="quote" id="quote3">
+      <div class="quote-header">
+        <span class="quote-title">Ultimate</span>
+        <span class="quote-price">$29.99/month</span>
+      </div>
+      <div class="quote-body">
+        <ul>
+          <li>Unlimited storage</li>
+          <li>Unlimited bandwidth</li>
+          <li>Unlimited domains</li>
+          <li>24/7 support</li>
+        </ul>
+      </div>
+      <button class="quote-button" onclick="selectQuote(3)">Select</button>
+    </div>
+    <div class="quote-compare">
+      <span class="quote-compare-label">Compare with:</span>
+      <select class="quote-compare-select" id="quote-compare-select" onchange="compareQuote()">
+        <option value="0">None</option>
+        <option value="1">Basic</option>
+        <option value="2">Premium</option>
+        <option value="3">Ultimate</option>
+      </select>
+    </div>
+  </div>
+  <script>
+    // Add your custom JavaScript code here
+    var selectedQuote = 0; // The id of the selected quote
+    var comparedQuote = 0; // The id of the compared quote
+
+    // This function is called when a quote is selected
+    function selectQuote(id) {
+      // Remove the selected class from the previous quote
+      if (selectedQuote > 0) {
+        document.getElementById("quote" + selectedQuote).classList.remove("selected");
+      }
+      // Add the selected class to the current quote
+      document.getElementById("quote" + id).classList.add("selected");
+      // Update the selected quote id
+      selectedQuote = id;
+      // Update the compare select option
+      document.getElementById("quote-compare-select").value = 0;
+      // Reset the compared quote id
+      comparedQuote = 0;
+    }
+
+    // This function is called when a quote is compared
+    function compareQuote() {
+      // Get the id of the compared quote from the select option
+      var id = document.getElementById("quote-compare-select").value;
+      // Remove the compared class from the previous quote
+      if (comparedQuote > 0) {
+        document.getElementById("quote" + comparedQuote).classList.remove("compared");
+      }
+      // Add the compared class to the current quote
+      if (id > 0) {
+        document.getElementById("quote" + id).classList.add("compared");
+      }
+      // Update the compared quote id
+      comparedQuote = id;
+    }
+  </script>
+</body>
+</html>

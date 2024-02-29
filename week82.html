@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>General Knowledge Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: black;
+      text-align: center;
+    }
+    input[type="text"], button {
+      margin-top: 20px;
+      padding: 15px;
+      width: calc(100% - 30px);
+      box-sizing: border-box;
+    }
+    button {
+      cursor: pointer;
+      background-color: yellowgreen;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: yellowgreen;
+    }
+    #feedback {
+      margin-top: 20px;
+      font-weight: bold;
+      color: black;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>General questions
+    </h1>
+    <div id="question"></div>
+    <input type="text" id="answerInput" placeholder="Your Answer">
+    <button onclick="checkAnswer()">Submit</button>
+    <div id="feedback"></div>
+  </div>
+  <script>
+    const questions = [
+      { question: "What is the capital of France?", answer: "Paris" },
+      { question: "Who wrote 'Romeo and Juliet'?", answer: "William Shakespeare" },
+      { question: "What is the largest mammal in the world?", answer: "Blue whale" },
+      { question: "What is the chemical symbol for water?", answer: "H2O" },
+      { question: "Who painted the Mona Lisa?", answer: "Leonardo da Vinci" },
+      { question: "What is the currency of Japan?", answer: "Yen" },
+      { question: "What is the tallest mountain in the world?", answer: "Mount Everest" },
+      { question: "Who discovered penicillin?", answer: "Alexander Fleming" },
+      { question: "What is the main ingredient in guacamole?", answer: "Avocado" },
+      { question: "What is the largest planet in our solar system?", answer: "Jupiter" },
+      { question: "What year did the Titanic sink?", answer: "1912" },
+      { question: "What is the chemical symbol for gold?", answer: "Au" },
+      { question: "What is the capital of Canada?", answer: "Ottawa" },
+      { question: "Who wrote 'To Kill a Mockingbird'?", answer: "Harper Lee" },
+      { question: "What is the hardest natural substance on Earth?", answer: "Diamond" }
+    ];
+    let currentQuestionIndex = 0;
+    function displayQuestion() {
+      document.getElementById('question').textContent = questions[currentQuestionIndex].question;
+    }
+    function checkAnswer() {
+      const userAnswer = document.getElementById('answerInput').value.trim();
+      const correctAnswer = questions[currentQuestionIndex].answer;
+      if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+        document.getElementById('feedback').textContent = "Correct! Next question.";
+        currentQuestionIndex++;
+        if (currentQuestionIndex >= questions.length) {
+          currentQuestionIndex = questions.length - 1;
+        }
+      } else {
+        document.getElementById('feedback').textContent = "Incorrect! Try again.";
+      }
+      document.getElementById('answerInput').value = '';
+      displayQuestion();
+    }
+    displayQuestion();
+  </script>
+</body>
+</html>

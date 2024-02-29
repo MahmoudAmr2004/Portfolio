@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p id="demo" style="display:none">Hello JavaScript!</p>
+        <button type="button" onclick="showDemo()">Show</button>
+        <button type="button" onclick="hideDemo()">Hide</button>
+        <script>
+            document.getElementById("demo").innerHTML = "Hello world";
+            function showDemo() {
+                document.getElementById('demo').style.display = 'block';
+            }
+            function hideDemo() {
+                document.getElementById('demo').style.display = 'none';
+            }
+        </script>
+        <p id="result"></p>
+        <script>
+            document.getElementById("result").innerHTML = 5 + 6;
+        </script>
+        <script>
+            document.write("Hello World");
+        </script>
+        <script>
+            window.alert(5 + 6);
+        </script>
+        <script>
+            console.log(5 + 6);
+        </script>
+    </body>
+</html>
